@@ -195,7 +195,22 @@
             submitBtn.disabled = true;
             submitBtn.textContent = 'Joining...';
             
-            // Store locally (replace with actual API in production)
+            // Send to webhook (webhook.site - free service)
+            try {
+                await fetch('https://webhook.site/69b128c0-90e7-4910-91fc-e0d15dab66cb', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        email: email, 
+                        date: new Date().toISOString(),
+                        source: 'contentflow-landing'
+                    })
+                });
+            } catch (err) {
+                console.log('Webhook error, storing locally:', err);
+            }
+            
+            // Also store locally as backup
             const waitlist = JSON.parse(localStorage.getItem('contentflow_waitlist_emails') || '[]');
             waitlist.push({ email: email, date: new Date().toISOString() });
             localStorage.setItem('contentflow_waitlist_emails', JSON.stringify(waitlist));
