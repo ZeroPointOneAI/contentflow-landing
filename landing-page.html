@@ -3,55 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ContentFlow - AI Content Generator</title>
+    <title>ContentFlow - AI Content Generator $9/mo</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
-        header { text-align: center; padding: 3rem 0; border-bottom: 1px solid #eee; }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #1a1a1a; }
-        .tagline { font-size: 1.25rem; color: #666; margin-bottom: 1rem; }
-        .price { font-size: 2rem; font-weight: bold; color: #2563eb; margin: 2rem 0; }
-        .price span { font-size: 1rem; color: #666; font-weight: normal; }
-        .features { list-style: none; padding: 2rem 0; }
-        .features li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
-        .features li::before { content: "✓"; position: absolute; left: 0; color: #2563eb; }
-        .cta { display: block; background: #2563eb; color: white; text-align: center; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 2rem 0; }
-        .cta:hover { background: #1d4ed8; }
-        .pain-point { background: #fee2e2; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
-        .pain-point h3 { color: #dc2626; margin-bottom: 0.5rem; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #fafafa; }
+        .container { max-width: 700px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        /* Hero */
+        header { text-align: center; padding: 4rem 0 3rem; background: linear-gradient(180deg, #fff 0%, #fafafa 100%); }
+        h1 { font-size: 3rem; margin-bottom: 0.5rem; color: #1a1a1a; letter-spacing: -0.02em; }
+        .tagline { font-size: 1.35rem; color: #666; margin-bottom: 1.5rem; }
+        
+        /* Price card */
+        .price-card { background: #fff; border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center; }
+        .price { font-size: 3rem; font-weight: 800; color: #2563eb; }
+        .price span { font-size: 1rem; color: #666; font-weight: 500; }
+        .price-compare { color: #999; text-decoration: line-through; margin-bottom: 0.5rem; }
+        .savings { background: #dcfce7; color: #166534; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; font-weight: 600; font-size: 0.9rem; margin-top: 1rem; }
+        
+        /* Pain points */
+        .pain-point { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 2rem; }
+        .pain-point h3 { color: #92400e; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        
+        /* Features */
+        .features { background: #fff; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .features h2 { text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .feature { display: flex; align-items: flex-start; gap: 0.75rem; }
+        .feature-icon { background: #eff6ff; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .feature h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+        .feature p { font-size: 0.875rem; color: #666; }
+        
+        /* Waitlist form */
+        .waitlist { background: #1a1a1a; color: #fff; border-radius: 16px; padding: 2.5rem; text-align: center; margin-bottom: 2rem; }
+        .waitlist h2 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .waitlist p { color: #999; margin-bottom: 1.5rem; }
+        .waitlist-form { display: flex; gap: 0.75rem; max-width: 450px; margin: 0 auto; }
+        .waitlist-form input { flex: 1; padding: 0.875rem 1rem; border-radius: 8px; border: none; font-size: 1rem; }
+        .waitlist-form button { background: #2563eb; color: white; border: none; padding: 0.875rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+        .waitlist-form button:hover { background: #1d4ed8; }
+        .waitlist-form button:disabled { background: #666; cursor: not-allowed; }
+        .success-msg { display: none; color: #4ade80; margin-top: 1rem; }
+        
+        /* Social proof */
+        .social-proof { text-align: center; padding: 1.5rem; color: #666; font-size: 0.9rem; }
+        
+        /* FAQ */
+        .faq { background: #fff; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .faq h2 { text-align: center; margin-bottom: 1.5rem; }
+        .faq-item { border-bottom: 1px solid #eee; padding: 1rem 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h4 { margin-bottom: 0.5rem; color: #1a1a1a; }
+        .faq-item p { color: #666; font-size: 0.95rem; }
+        
         footer { text-align: center; padding: 2rem; color: #999; font-size: 0.875rem; }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 2.25rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .waitlist-form { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <header>
+        <div class="container">
             <h1>ContentFlow</h1>
-            <p class="tagline">AI content generation that doesn't break the bank.</p>
-        </header>
+            <p class="tagline">Professional AI content — without the enterprise price tag.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="price-card">
+            <p class="price-compare">Jasper: $49/mo</p>
+            <div class="price">$9<span>/month</span></div>
+            <div class="savings">Save $480/year</div>
+        </div>
         
         <div class="pain-point">
-            <h3>💸 Tired of expensive AI writing tools?</h3>
-            <p>Jasper wants $49+/month. Rytr is limited. ChatGPT is generic. There's a better way.</p>
+            <h3>🤔 Why pay $49+ for AI writing?</h3>
+            <p>Most solopreneurs don't need 50+ templates, team seats, or "AI brand voice" that's just prompt engineering under the hood. You need <strong>great content, fast, for less.</strong></p>
         </div>
         
-        <div class="price">
-            $9/month <span>— early access pricing</span>
+        <div class="features">
+            <h2>What you get</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">📝</div>
+                    <div>
+                        <h4>Unlimited Generation</h4>
+                        <p>Write as much as you need. No word limits.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <div>
+                        <h4>SEO Blog Posts</h4>
+                        <p>Optimized for search in seconds, not hours.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <div>
+                        <h4>Social Captions</h4>
+                        <p>Platform-specific posts that actually engage.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <div>
+                        <h4>Rewrite & Improve</h4>
+                        <p>Turn rough drafts into polished content.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📋</div>
+                    <div>
+                        <h4>Multi-Format</h4>
+                        <p>Blogs, emails, ads, product descriptions.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <div>
+                        <h4>Fast & Simple</h4>
+                        <p>No learning curve. Just write better.</p>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <ul class="features">
-            <li><strong>Unlimited</strong> AI content generation</li>
-            <li><strong>Custom</strong> brand voice training</li>
-            <li><strong>SEO-optimized</strong> blog posts in seconds</li>
-            <li><strong>Social media</strong> captions that actually convert</li>
-            <li><strong>No credit card</strong> required to start</li>
-        </ul>
+        <div class="waitlist">
+            <h2>Join the Waitlist</h2>
+            <p>Early access — no credit card required.</p>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" id="emailInput" placeholder="your@email.com" required>
+                <button type="submit" id="submitBtn">Join Waitlist</button>
+            </form>
+            <p class="success-msg" id="successMsg">🎉 You're on the list! We'll email you when we launch.</p>
+        </div>
         
-        <a href="#" class="cta" id="earlyAccess">Join Early Access Waitlist</a>
+        <div class="social-proof">
+            <p>Launching Q2 2026 • Built for creators, not enterprises</p>
+        </div>
         
-        <p style="text-align: center; color: #666; font-size: 0.875rem;">
-            🎉 Launching soon. Be the first to know.
-        </p>
+        <div class="faq">
+            <h2>Frequently Asked</h2>
+            <div class="faq-item">
+                <h4>How is this so cheap?</h4>
+                <p>We use efficient AI models and focus on what actually matters — great writing — not bloated enterprise features you won't use.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is the quality comparable to Jasper?</h4>
+                <p>We're using the same underlying AI models. The difference is we're not charging you for 50 templates you don't need.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What's included in early access?</h4>
+                <p>Full access to all features at $9/mo locked in forever for early adopters.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I cancel anytime?</h4>
+                <p>Yes. No contracts, no commitments. Month-to-month.</p>
+            </div>
+        </div>
         
         <footer>
             <p>© 2026 ContentFlow. Built for solopreneurs and small teams.</p>
@@ -59,14 +173,41 @@
     </div>
     
     <script>
-        document.getElementById('earlyAccess').addEventListener('click', function(e) {
+        // Simple waitlist - stores to localStorage for now
+        // In production, connect to Airtable/Google Sheets/etc.
+        const form = document.getElementById('waitlistForm');
+        const emailInput = document.getElementById('emailInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMsg = document.getElementById('successMsg');
+        
+        // Check if already signed up
+        if (localStorage.getItem('contentflow_waitlist')) {
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+            successMsg.textContent = '🎉 You\'re already on the list!';
+        }
+        
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            const email = prompt('Enter your email to join the waitlist:');
-            if (email) {
-                alert('Thanks! We\'ll notify you when we launch.');
-                // In production, this would send to a backend
-                console.log('Waitlist signup:', email);
-            }
+            const email = emailInput.value.trim();
+            if (!email) return;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+            
+            // Store locally (replace with actual API in production)
+            const waitlist = JSON.parse(localStorage.getItem('contentflow_waitlist_emails') || '[]');
+            waitlist.push({ email: email, date: new Date().toISOString() });
+            localStorage.setItem('contentflow_waitlist_emails', JSON.stringify(waitlist));
+            localStorage.setItem('contentflow_waitlist', 'true');
+            
+            // Simulate API delay
+            await new Promise(r => setTimeout(r, 800));
+            
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+            
+            console.log('Waitlist signup:', email);
         });
     </script>
 </body>
