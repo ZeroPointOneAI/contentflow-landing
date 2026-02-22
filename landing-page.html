@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContentFlow - AI Content Generator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; padding: 3rem 0; border-bottom: 1px solid #eee; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #1a1a1a; }
+        .tagline { font-size: 1.25rem; color: #666; margin-bottom: 1rem; }
+        .price { font-size: 2rem; font-weight: bold; color: #2563eb; margin: 2rem 0; }
+        .price span { font-size: 1rem; color: #666; font-weight: normal; }
+        .features { list-style: none; padding: 2rem 0; }
+        .features li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        .features li::before { content: "✓"; position: absolute; left: 0; color: #2563eb; }
+        .cta { display: block; background: #2563eb; color: white; text-align: center; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 2rem 0; }
+        .cta:hover { background: #1d4ed8; }
+        .pain-point { background: #fee2e2; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
+        .pain-point h3 { color: #dc2626; margin-bottom: 0.5rem; }
+        footer { text-align: center; padding: 2rem; color: #999; font-size: 0.875rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ContentFlow</h1>
+            <p class="tagline">AI content generation that doesn't break the bank.</p>
+        </header>
+        
+        <div class="pain-point">
+            <h3>💸 Tired of expensive AI writing tools?</h3>
+            <p>Jasper wants $49+/month. Rytr is limited. ChatGPT is generic. There's a better way.</p>
+        </div>
+        
+        <div class="price">
+            $9/month <span>— early access pricing</span>
+        </div>
+        
+        <ul class="features">
+            <li><strong>Unlimited</strong> AI content generation</li>
+            <li><strong>Custom</strong> brand voice training</li>
+            <li><strong>SEO-optimized</strong> blog posts in seconds</li>
+            <li><strong>Social media</strong> captions that actually convert</li>
+            <li><strong>No credit card</strong> required to start</li>
+        </ul>
+        
+        <a href="#" class="cta" id="earlyAccess">Join Early Access Waitlist</a>
+        
+        <p style="text-align: center; color: #666; font-size: 0.875rem;">
+            🎉 Launching soon. Be the first to know.
+        </p>
+        
+        <footer>
+            <p>© 2026 ContentFlow. Built for solopreneurs and small teams.</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.getElementById('earlyAccess').addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = prompt('Enter your email to join the waitlist:');
+            if (email) {
+                alert('Thanks! We\'ll notify you when we launch.');
+                // In production, this would send to a backend
+                console.log('Waitlist signup:', email);
+            }
+        });
+    </script>
+</body>
+</html>
